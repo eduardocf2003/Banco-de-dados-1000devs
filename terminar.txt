@@ -1,0 +1,89 @@
+/* Aula 04 */
+
+*Funcionarios (Codigo, Nome, SobreNome, DataNasci, CPF,
+			   RG, Endereço, CEP, Cidade, UF, Fone, 
+			   CodigoDepartamento, Funcao, Salario)
+
+*Departamentos ( Codigo, Nome, Localizacao, CodigoFuncionarioGerente)
+
+CREATE DATABASE atividade1
+
+CREATE TABLE IF NOT EXISTS funcionario (
+	codigo SERIAL PRIMARY KEY,
+	nome VARCHAR(60) NOT NULL,
+	sobrenome VARCHAR(60) NOT NULL,
+	datanasc DATE NOT NULL,
+	cpf VARCHAR(14) UNIQUE,
+	rg VARCHAR(20),
+	endereco VARCHAR(120) NOT NULL,
+	cep VARCHAR(9),
+	cidade VARCHAR(50) NOT NULL,
+	uf VARCHAR(2) NOT NULL,
+	fone VARCHAR(20),
+	codigodepartamento INTEGER,
+	funcao VARCHAR(30) NOT NULL,
+	salario NUMERIC(9,2) NOT NULL
+)
+
+SELECT * FROM funcionario;
+
+/* Aula 04 */
+
+*Funcionarios (Codigo, Nome, SobreNome, DataNasci, CPF,
+			   RG, Endereço, CEP, Cidade, UF, Fone, 
+			   CodigoDepartamento, Funcao, Salario)
+/* Aula 04 */
+
+*Funcionarios (Codigo, Nome, SobreNome, DataNasci, CPF,
+			   RG, Endereço, CEP, Cidade, UF, Fone, 
+			   CodigoDepartamento, Funcao, Salario)
+
+*Departamentos ( Codigo, Nome, Localizacao, CodigoFuncionarioGerente)
+
+CREATE DATABASE atividade1
+
+CREATE TABLE IF NOT EXISTS funcionario (
+	codigo SERIAL PRIMARY KEY,
+	nome VARCHAR(60) NOT NULL,
+	sobrenome VARCHAR(60) NOT NULL,
+	datanasc DATE NOT NULL,
+	cpf VARCHAR(14) UNIQUE,
+	rg VARCHAR(20),
+	endereco VARCHAR(120) NOT NULL,
+	cep VARCHAR(9),
+	cidade VARCHAR(50) NOT NULL,
+	uf VARCHAR(2) NOT NULL,
+	fone VARCHAR(20),
+	codigodepartamento INTEGER,
+	funcao VARCHAR(30) NOT NULL,
+	salario NUMERIC(9,2) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS departamento (
+	codigo SERIAL PRIMARY KEY,
+	nome VARCHAR(60) NOT NULL,
+	localizacao VARCHAR(120),
+	codigofuncionariogerente INTEGER REFERENCES funcionario(codigo)
+	ON UPDATE CASCADE
+);
+
+/* incluindo chave estrangeira */
+
+ALTER TABLE funcionario ADD CONSTRAINT fk_departamento FOREIGN KEY
+(codigodepartamento) REFERENCES departamento(codigo);
+
+/* registros */
+
+INSERT INTO funcionario (nome, sobrenome, datanasc, cpf, rg, endereco, cep, cidade, uf, fone, funcao, salario) VALUES 
+						 ('Quail Eaton','Micah Stone','Mar 20, 2023','85941177','1298','Ap #482-727 Turpis Ave','50825','Laval','GO','(448) 521-5112','Rutrum Non Hendrerit Limited', '2000.00'),
+  ('Charissa Levy','Summer Baird','Sep 18, 2022','94425725','791','264-3698 Eleifend. Street','58751','Zwelitsha','MG','1-799-619-5763','Suspendisse Commodo PC', '3000.00'),
+  ('Leah Vance','Axel Adkins','Jan 10, 2022','98213960','2755','Ap #459-6787 Tincidunt Rd.','97652','Georgia','SP','(567) 675-6659','Mollis Nec orporation','5000.00'),
+  ('Claudia Dickson','Armand Becker','Oct 14, 2022','21511644','2303','478-1911 Accumsan Ave','58B 1T4','Quimbaya','RJ','1-626-531-2830','Quis LLP', '4000.00'),
+  ('Britanney Foreman','Marsden Miranda','Oct 9, 2021','25389059','3016','P.O. Box 670, 7605 Magnis Rd.','83485','Killa Abdullah','BA','1-826-618-4275','Imperdiet Ullamcorper PC', '12000.00'),
+  ('Branden Whitley','Lana Craig','Dec 17, 2021','96328102','4961','360-7730 Donec Ave','526283','Daejeon','TO','1-862-516-6058','Eget Ltd', '8000.00'),
+  ('Dillon Knowles','Connor Jefferson','Apr 4, 2023','67485678','2898','Ap #568-2888 Lobortis Avenue','62044','Luckenwalde','AM','(504) 144-0258','Adipiscing Lacus LLP', '4000.00'),
+  ('Adrienne Sloan','Ian Booth','Feb 24, 2023','34865744','4113','P.O. Box 736, 1432 Nisi. Road','2331','Oslo','RS','1-363-416-3494','Quam Quis Corporation', '2000.00'),
+  ('Daquan Barlow','Gloria Berg','May 20, 2022','92667647','278','4660 Tellus Avenue','08775','Serangoon','PR','1-346-878-2711','Eleifend Associates', '7000.00'),
+  ('Reuben Glenn','Delilah Burns','Nov 8, 2021','22805042','959','605-8661 Euismod St.','9271','Llanwrtwd Wells','RR','(266) 961-1646','Erat Sed Institute', '2000.00');
+
+SELECT * FROM funcionario

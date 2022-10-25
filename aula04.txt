@@ -1,0 +1,17 @@
+/* Aula 04 */
+/* Criando banco de dados */
+CREATE DATABASE teste1
+    WITH
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    CONNECTION LIMIT = -1
+    IS_TEMPLATE = False;
+/* Adicionando comentario ao banco */
+COMMENT ON DATABASE teste1
+    IS 'banco de dados teste';
+	
+	/* Alterando o nome do banco */
+	ALTER DATABASE teste1 RENAME TO teste2;
+	
+	/* Excluindo o BD */
+	DROP DATABASE teste2;
